@@ -1,2 +1,2 @@
 # palautusrepositorio
-Ohjelmistotuotannon kurssia varten luotu repositorio
+[Ohtuvarasto](https://github.com/heliparv/ohtuvarasto)
