@@ -18,3 +18,6 @@ class AppLibrary:
         }
 
         requests.post(f"{self._base_url}/register", data=data)
+
+    def main_page(self):
+        requests.post(self._base_url)
