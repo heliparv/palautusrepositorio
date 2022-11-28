@@ -80,3 +80,11 @@ class TestOstoskori(unittest.TestCase):
         self.kori.poista_tuote(self.maito)
         ostos = self.kori.ostokset()[0]
         self.assertEqual(ostos.lukumaara(), 1)
+
+    def test_jos_koriin_lisattu_tuote_poistetaan_on_kori_tyhja(self):
+        self.kori.lisaa_tuote(self.maito)
+        self.kori.poista_tuote(self.maito)
+        ostokset = self.kori.ostokset()
+        self.assertEqual(len(ostokset), 0)
+        self.assertEqual(self.kori.tavaroita_korissa(), 0)
+        self.assertEqual(self.kori.hinta(), 0)
