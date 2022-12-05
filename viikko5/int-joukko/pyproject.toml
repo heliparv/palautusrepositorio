@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tennis"
+name = "int-joukko"
 version = "0.1.0"
 description = ""
 authors = ["Kalle Ilves <kalle.ilves@helsinki.fi>"]
