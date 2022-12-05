@@ -1,12 +1,12 @@
 class IntJoukko:
     def __init__(self, kapasiteetti=5, kasvatuskoko=5):
         if not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("Väärä kapasiteetti")
+            raise Exception("Kapasiteetin on oltava nollaa suurempi kokonaisluku")
         else:
             self.kapasiteetti = kapasiteetti
 
         if not isinstance(kasvatuskoko, int) or kasvatuskoko < 0:
-            raise Exception("kapasiteetti2")
+            raise Exception("Kasvatuskoon on oltava nollaa suurempi kokonaisluku")
         else:
             self.kasvatuskoko = kasvatuskoko
 
