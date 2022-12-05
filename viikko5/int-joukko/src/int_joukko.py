@@ -5,8 +5,8 @@ class IntJoukko:
         else:
             self.kapasiteetti = kapasiteetti
 
-        if not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("kapasiteetti2")  # heitin vaan jotain :D
+        if not isinstance(kasvatuskoko, int) or kasvatuskoko < 0:
+            raise Exception("kapasiteetti2")
         else:
             self.kasvatuskoko = kasvatuskoko
 
