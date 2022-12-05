@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 class IntJoukko:
     def __init__(self, kapasiteetti=5, kasvatuskoko=5):
         if not isinstance(kapasiteetti, int) or kapasiteetti < 0:
@@ -21,14 +23,11 @@ class IntJoukko:
             return False
 
     def lisaa(self, n):
-        ei_ole = 0
 
         if self.alkioiden_lkm == 0:
             self.ljono[0] = n
             self.alkioiden_lkm = self.alkioiden_lkm + 1
             return True
-        else:
-            pass
 
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
@@ -69,7 +68,7 @@ class IntJoukko:
         for i in range(0, len(a)):
             b[i] = a[i]
 
-    def mahtavuus(self):
+    def alkioiden_lukumaara(self):
         return self.alkioiden_lkm
 
     def to_int_list(self):
