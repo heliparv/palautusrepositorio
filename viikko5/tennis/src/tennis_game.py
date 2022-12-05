@@ -20,16 +20,11 @@ class TennisGame:
             score = self.score_equal()
 
         elif max(self.player1_score, self.player2_score) >= 4:
-            minus_result = self.player1_score - self. player2_score
-
-            if minus_result == 1:
-                score = "Advantage player1"
-            elif minus_result == -1:
-                score = "Advantage player2"
-            elif minus_result >= 2:
-                score = "Win for player1"
+            if self.player1_score > self.player2_score:
+                self.scores_high("player1")
             else:
-                score = "Win for player2"
+                self.scores_high("player2")
+            
         else:
             for i in range(1, 3):
                 if i == 1:
@@ -54,3 +49,11 @@ class TennisGame:
             return f"{self.score_names[self.player1_score]}-All"
         else:
             return "Deuce"
+
+    def scores_high(self, player):
+        minus_result = abs(self.player1_score - self. player2_score)
+
+        if minus_result == 1:
+            return f"Advantage {player}"
+        else:
+            return f"Win for {player}"
