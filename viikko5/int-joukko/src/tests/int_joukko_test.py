@@ -16,26 +16,27 @@ class TestIntJoukko(unittest.TestCase):
 
         return joukko
 
-    def toimii_kasvatuksen_jalkeen(self, joukko):
+    def toimii_kasvatuksen_jalkeen(self):
+        joukko = IntJoukko()
         lisattavat = [1, 2, 4, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 
         for luku in lisattavat:
             joukko.lisaa(luku)
 
-        self.assertEqual(joukko.mahtavuus(), 14)
+        self.assertEqual(joukko.alkioiden_lukumaara(), 14)
         self.assertTrue(joukko.kuuluu(11))
         joukko.poista(11)
         self.assertFalse(joukko.kuuluu(11))
-        self.assertEqual(joukko.mahtavuus(), 13)
+        self.assertEqual(joukko.alkioiden_lukumaara(), 13)
 
     def test_lukuja_lisatty_maara(self):
         self.joukko.lisaa(4)
-        self.assertEqual(self.joukko.mahtavuus(), 3)
+        self.assertEqual(self.joukko.alkioiden_lukumaara(), 3)
 
     def test_sama_luku_menee_joukkoon_vaan_kerran(self):
         self.joukko.lisaa(10)
         self.joukko.lisaa(3)
-        self.assertEqual(self.joukko.mahtavuus(), 2)
+        self.assertEqual(self.joukko.alkioiden_lukumaara(), 2)
 
     def test_vain_lisatyt_luvut_loytyvat(self):
         self.assertTrue(self.joukko.kuuluu(10))
@@ -45,7 +46,7 @@ class TestIntJoukko(unittest.TestCase):
     def test_poistettu_ei_ole_enaa_joukossa(self):
         self.joukko.poista(3)
         self.assertFalse(self.joukko.kuuluu(3))
-        self.assertEqual(self.joukko.mahtavuus(), 1)
+        self.assertEqual(self.joukko.alkioiden_lukumaara(), 1)
 
     def test_palautetaan_oikea_taulukko(self):
         odotettu = [3, 55, 99]

@@ -14,8 +14,6 @@ class IntJoukko:
 
         self.ljono = [0] * self.kapasiteetti
 
-        self.alkioiden_lkm = 0
-
     def kuuluu(self, n):
         if n in self.ljono:
             return True
@@ -26,12 +24,10 @@ class IntJoukko:
 
         if self.alkioiden_lkm == 0:
             self.ljono[0] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
             return True
 
         if not self.kuuluu(n):
             self.ljono[self.alkioiden_lkm] = n
-            self.alkioiden_lkm = self.alkioiden_lkm + 1
 
             if self.alkioiden_lkm % len(self.ljono) == 0:
                 taulukko_old = self.ljono
@@ -44,6 +40,8 @@ class IntJoukko:
         return False
 
     def poista(self, n):
+        if n in self.ljono:
+            aa = 0 #Temp
         kohta = -1
         apu = 0
 
@@ -59,7 +57,6 @@ class IntJoukko:
                 self.ljono[j] = self.ljono[j + 1]
                 self.ljono[j + 1] = apu
 
-            self.alkioiden_lkm = self.alkioiden_lkm - 1
             return True
 
         return False
@@ -69,15 +66,10 @@ class IntJoukko:
             b[i] = a[i]
 
     def alkioiden_lukumaara(self):
-        return self.alkioiden_lkm
+        return len(self.ljono)
 
     def to_int_list(self):
-        taulu = [0] * self.alkioiden_lkm
-
-        for i in range(0, len(taulu)):
-            taulu[i] = self.ljono[i]
-
-        return taulu
+        return deepcopy(self.ljono)
 
     @staticmethod
     def yhdiste(a, b):
@@ -121,15 +113,8 @@ class IntJoukko:
         return z
 
     def __str__(self):
-        if self.alkioiden_lkm == 0:
-            return "{}"
-        elif self.alkioiden_lkm == 1:
-            return "{" + str(self.ljono[0]) + "}"
-        else:
-            tuotos = "{"
-            for i in range(0, self.alkioiden_lkm - 1):
-                tuotos = tuotos + str(self.ljono[i])
-                tuotos = tuotos + ", "
-            tuotos = tuotos + str(self.ljono[self.alkioiden_lkm - 1])
-            tuotos = tuotos + "}"
-            return tuotos
+        tuotos = "{"
+        for i in range(0, len(self.ljono)-1):
+            tuotos = tuotos + str(self.ljono[i]) + ", "
+        tuotos = tuotos + str(self.ljono[-1])+ "}"
+        return tuotos
