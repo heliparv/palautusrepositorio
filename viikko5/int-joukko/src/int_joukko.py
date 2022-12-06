@@ -5,14 +5,13 @@ class IntJoukko:
         if not isinstance(kapasiteetti, int) or kapasiteetti < 0:
             raise Exception("Kapasiteetin on oltava nollaa suurempi kokonaisluku")
         else:
-            self.kapasiteetti = kapasiteetti
+            self.ljono = [0] * kapasiteetti
 
         if not isinstance(kasvatuskoko, int) or kasvatuskoko < 0:
             raise Exception("Kasvatuskoon on oltava nollaa suurempi kokonaisluku")
         else:
             self.kasvatuskoko = kasvatuskoko
 
-        self.ljono = [0] * self.kapasiteetti
         self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
