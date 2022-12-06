@@ -28,7 +28,6 @@ class IntJoukko:
             if self.alkioiden_lkm == len(self.ljono):
                 self.ljono = self.ljono + [0]*self.kasvatuskoko
             return True
-
         return False
 
     def poista(self, n):
@@ -42,37 +41,36 @@ class IntJoukko:
         return False
 
     def alkioiden_lukumaara(self):
-        return len(self.ljono)
+        return self.alkioiden_lkm
 
     def to_int_list(self):
-        return deepcopy(self.ljono)
+        return deepcopy(self.ljono[:self.alkioiden_lkm])
 
     @staticmethod
     def yhdiste(a, b):
-        x = IntJoukko()
+        yhdiste = IntJoukko()
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            x.lisaa(a_taulu[i])
+        for numero in a_taulu:
+            yhdiste.lisaa(numero)
 
-        for i in range(0, len(b_taulu)):
-            x.lisaa(b_taulu[i])
+        for numero in b_taulu:
+            yhdiste.lisaa(numero)
 
-        return x
+        return yhdiste
 
     @staticmethod
     def leikkaus(a, b):
-        y = IntJoukko()
+        leikkaus = IntJoukko()
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            for j in range(0, len(b_taulu)):
-                if a_taulu[i] == b_taulu[j]:
-                    y.lisaa(b_taulu[j])
+        for numero in a_taulu:
+            if numero in b_taulu:
+                leikkaus.lisaa(numero)
 
-        return y
+        return leikkaus
 
     @staticmethod
     def erotus(a, b):
