@@ -22,16 +22,12 @@ class IntJoukko:
             return False
 
     def lisaa(self, n):
-        if not self.kuuluu(n):
-            self.ljono.append(n)
-            self.alkioiden_maara += 1
+        if n not in self.ljono:
+            self.ljono[self.alkioiden_lkm] = n
+            self.alkioiden_lkm += 1
 
             if self.alkioiden_lkm == len(self.ljono):
-                taulukko_old = self.ljono
-                self.kopioi_taulukko(self.ljono, taulukko_old)
-                self.ljono = [0] * (self.alkioiden_lkm + self.kasvatuskoko)
-                self.kopioi_taulukko(taulukko_old, self.ljono)
-
+                self.ljono = self.ljono + [0]*self.kasvatuskoko
             return True
 
         return False
@@ -58,10 +54,6 @@ class IntJoukko:
             return True
 
         return False
-
-    def kopioi_taulukko(self, a, b):
-        for i in range(0, len(a)):
-            b[i] = a[i]
 
     def alkioiden_lukumaara(self):
         return len(self.ljono)
