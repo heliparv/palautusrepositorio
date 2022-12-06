@@ -13,6 +13,7 @@ class IntJoukko:
             self.kasvatuskoko = kasvatuskoko
 
         self.ljono = [0] * self.kapasiteetti
+        self.alkioiden_lkm = 0
 
     def kuuluu(self, n):
         if n in self.ljono:
@@ -21,15 +22,11 @@ class IntJoukko:
             return False
 
     def lisaa(self, n):
-
-        if self.alkioiden_lkm == 0:
-            self.ljono[0] = n
-            return True
-
         if not self.kuuluu(n):
-            self.ljono[self.alkioiden_lkm] = n
+            self.ljono.append(n)
+            self.alkioiden_maara += 1
 
-            if self.alkioiden_lkm % len(self.ljono) == 0:
+            if self.alkioiden_lkm == len(self.ljono):
                 taulukko_old = self.ljono
                 self.kopioi_taulukko(self.ljono, taulukko_old)
                 self.ljono = [0] * (self.alkioiden_lkm + self.kasvatuskoko)
@@ -56,6 +53,7 @@ class IntJoukko:
                 apu = self.ljono[j]
                 self.ljono[j] = self.ljono[j + 1]
                 self.ljono[j + 1] = apu
+                self.alkioiden_lkm -= 1 
 
             return True
 
