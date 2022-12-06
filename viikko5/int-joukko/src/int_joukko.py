@@ -74,17 +74,15 @@ class IntJoukko:
 
     @staticmethod
     def erotus(a, b):
-        z = IntJoukko()
+        erotus = IntJoukko()
         a_taulu = a.to_int_list()
         b_taulu = b.to_int_list()
 
-        for i in range(0, len(a_taulu)):
-            z.lisaa(a_taulu[i])
+        for numero in a_taulu:
+            if numero not in b_taulu:
+                erotus.lisaa(numero)
 
-        for i in range(0, len(b_taulu)):
-            z.poista(b_taulu[i])
-
-        return z
+        return erotus
 
     def __str__(self):
         tuotos = "{"
