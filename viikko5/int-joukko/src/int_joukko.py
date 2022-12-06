@@ -34,25 +34,12 @@ class IntJoukko:
 
     def poista(self, n):
         if n in self.ljono:
-            aa = 0 #Temp
-        kohta = -1
-        apu = 0
-
-        for i in range(0, self.alkioiden_lkm):
-            if n == self.ljono[i]:
-                kohta = i  # siis luku löytyy tuosta kohdasta :D
-                self.ljono[kohta] = 0
-                break
-
-        if kohta != -1:
-            for j in range(kohta, self.alkioiden_lkm - 1):
-                apu = self.ljono[j]
-                self.ljono[j] = self.ljono[j + 1]
-                self.ljono[j + 1] = apu
-                self.alkioiden_lkm -= 1 
-
+            self.ljono.remove(n)
+            self.ljono.append(0)
+            self.alkioiden_lkm -= 1
+            if len(self.ljono) - self.alkioiden_lkm == self.kasvatuskoko:
+                self.ljono = self.ljono[:-self.kasvatuskoko]
             return True
-
         return False
 
     def alkioiden_lukumaara(self):
