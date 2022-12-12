@@ -14,6 +14,13 @@ class Kayttoliittyma:
         self._sovellus = sovellus
         self._root = root
 
+        self._komennot = {
+            Komento.SUMMA: Summa(sovelluslogiikka, self._lue_syote),
+            Komento.EROTUS: Erotus(sovelluslogiikka, self._lue_syote),
+            Komento.NOLLAUS: Nollaus(sovelluslogiikka, self._lue_syote),
+            Komento.KUMOA: Kumoa(sovelluslogiikka, self._lue_syote)
+        }
+
     def kaynnista(self):
         self._tulos_var = StringVar()
         self._tulos_var.set(self._sovellus.tulos)
